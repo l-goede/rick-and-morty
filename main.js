@@ -5,10 +5,11 @@ const mainElement = createElement('main', {
   children: [
     createElement('header', {
       className: 'hero',
+
       children: [
         createElement('h1', {
           className: 'hero__title',
-          innerText: 'Rick and Morty API',
+          innerText: 'Rick and Morty',
         }),
         createElement('input', {
           className: 'input',
