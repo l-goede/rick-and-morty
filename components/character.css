@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&family=Roboto&display=swap');
+* {
+  letter-spacing: 0.1em;
+  background: #ffd6ff;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+
+:root {
+  --primarycolor: #f0dcca;
+  --secondarycolor: #c8b6ff;
+  --headlinecolor: #b8c0ff;
+}
+.hero__title {
+  font-size: 3em;
+}
+
+.character-card {
+  display: grid;
+  grid-auto-flow: column;
+  background: var(--background-color);
+  border-radius: 0.5em;
+}
+
+.character-card__imgage {
+  border-bottom-left-radius: 0.5em;
+  border-top-left-radius: 0.5em;
+  height: 10em;
+}
+
+.character-card__info {
+  padding: 1em;
+  display: grid;
+  grid-auto-flow: row;
+  justify-items: start;
+}
+.character-card__info * {
+  margin: 0;
+}
