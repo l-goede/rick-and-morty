@@ -1,27 +1,11 @@
 import './style.css';
-import { createElement } from './utils/elements';
+import { createElement, removeAllChildren } from './utils/elements';
 import { createCharacterElement } from './components/character';
+import { getCharacters } from './utils/api';
 
-const characters = [
-  {
-    imgSrc: 'https://rickandmortyapi.com/api/character/avatar/1.jpeg',
-    name: 'Rick Sanchez',
-    status: 'Alive',
-    species: 'Human',
-    origin: {
-      name: 'Earth',
-    },
-  },
-  {
-    imgSrc: 'https://rickandmortyapi.com/api/character/avatar/2.jpeg',
-    name: 'Morty Smith',
-    status: 'Alive',
-    species: 'Human',
-    origin: {
-      name: 'Earth',
-    },
-  },
-];
+const characterSection = createElement('section', {
+  className: 'results',
+});
 
 const mainElement = createElement('main', {
   children: [
@@ -37,14 +21,18 @@ const mainElement = createElement('main', {
           className: 'input',
           placeholder: 'Search character',
           autofocus: true,
+          oninput: (event) => {
+            removeAllChildren(characterSection);
+            const search = event.target.value;
+            getCharacters(search).then((characters) => {
+              const characterElements = characters.map(createCharacterElement);
+              characterSection.append(...characterElements);
+            });
+          },
         }),
       ],
     }),
-    createElement('section', {
-      className: 'results',
-
-      children: characters.map(createCharacterElement),
-    }),
+    characterSection,
     createElement('footer', {
       className: 'footer',
       children: [

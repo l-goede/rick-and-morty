@@ -40,3 +40,7 @@
 .character-card__info * {
   margin: 0;
 }
+
+.footer {
+  background: #dee2ff;
+}
