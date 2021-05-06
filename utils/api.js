@@ -2,7 +2,7 @@
 //   return fetch(`https://rickandmortyapi.com/api/character?name=${name}`)
 //     .then((response) => response.json())
 //     .then((data) => data.results);
-// }
+//
 
 export async function getCharacters(name) {
   const promise = fetch(
@@ -14,4 +14,14 @@ export async function getCharacters(name) {
   }
   const data = await response.json();
   return data.results;
+}
+
+export async function getCharacter(id) {
+  const promise = fetch(`https://rickandmortyapi.com/api/character/${id}`);
+  const response = await promise;
+  if (response.status === 404) {
+    return {};
+  }
+  const data = await response.json();
+  return data;
 }
